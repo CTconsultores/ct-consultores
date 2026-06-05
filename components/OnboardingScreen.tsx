@@ -123,18 +123,14 @@ export default function OnboardingScreen({ onComplete, onBack }: Props) {
   function addDeuda() { setDeudas([...deudas, { tipo: TIPOS_DEUDA[0], importe: 0, fechaFin: "" }]); }
   function removeDeuda(i: number) { setDeudas(deudas.filter((_, idx) => idx !== i)); }
   function updateDeuda(i: number, field: keyof Deuda, val: string | number) {
-    const updated = [...deudas];
-    (updated[i] as Record<string, unknown>)[field] = val;
-    setDeudas(updated);
+    setDeudas(prev => prev.map((d, idx) => idx === i ? { ...d, [field]: val } : d));
   }
 
   // Inversiones handlers
   function addInversion() { setInversiones([...inversiones, { producto: TIPOS_INV[0], cantidad: 0 }]); }
   function removeInversion(i: number) { setInversiones(inversiones.filter((_, idx) => idx !== i)); }
   function updateInversion(i: number, field: keyof Inversion, val: string | number) {
-    const updated = [...inversiones];
-    (updated[i] as Record<string, unknown>)[field] = val;
-    setInversiones(updated);
+    setInversiones(prev => prev.map((inv, idx) => idx === i ? { ...inv, [field]: val } : inv));
   }
 
   const stepLabels = ["Datos personales", "Ahorro", "Financiación", "Inversiones", "Acceso"];
