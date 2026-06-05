@@ -44,7 +44,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main style={{ width: "100%", minHeight: "100vh" }}>
       {screen === "welcome" && (
         <WelcomeScreen
           onLogin={() => setScreen("login")}

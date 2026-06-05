@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
-      <body style={{ fontFamily: "var(--font-inter), sans-serif" }}>
+      <body style={{ fontFamily: "var(--font-inter), sans-serif", margin: 0, padding: 0, width: "100%" }}>
         {children}
       </body>
     </html>
